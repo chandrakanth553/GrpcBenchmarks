@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package weather;
+
+service WeatherForecasts {
+  rpc GetWeatherForecasts (GetWeatherForecastsRequest) returns (GetWeatherForecastsResponse);
+}
+
+message GetWeatherForecastsResponse {
+  repeated WeatherForecast forecasts = 1;
+}
+
+message GetWeatherForecastsRequest {
+  int32 returnCount = 1;
+}
+
+message WeatherForecast {
+  google.protobuf.Timestamp date = 1;
+  int32 temperatureC = 2;
+  string summary = 3;
+}
